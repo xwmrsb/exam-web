@@ -1,4 +1,18 @@
 const { defineConfig } = require('@vue/cli-service')
+
 module.exports = defineConfig({
-  transpileDependencies: true
+  transpileDependencies: true,
+  lintOnSave: false,
+  css: {
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true,
+        }
+      }
+    }
+  },
+  chainWebpack: config => {
+    config.resolve.symlinks(true) // 热更新
+  }
 })
